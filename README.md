@@ -2,7 +2,7 @@
 
 ## Salt Gallery
 
-The purpose of this exercise is not only to practice front end development, but also to use a modern toolchain for the web.
+The purpose of this exercise is not only to practice front end development, but also to use a modern tool chain for the web.
 
 ### The Domain
 
@@ -10,7 +10,7 @@ You should create a simple web page that is listing random images from [Unsplash
 
 Unsplash is a gallery of images that comes with a very permissive [license](https://unsplash.com/license).
 One way to use the gallery is to generate random images like so `https://source.unsplash.com/random/200x200`.
-However, there is a cache that will prevent you from loding serveral random images at once. 
+However, there is a cache that will prevent you from loading several random images at once. 
 There are several ways you can hack this to load different images. 
 One way is to find a collection you like, and then through some JavaScript [generate random images](https://medium.com/quick-code/how-to-quickly-generate-a-random-gallery-of-images-from-an-unsplash-collection-in-javascript-4ddb2a6a4faf).
 Another way is to change the sizes of the downloaded images slightly, say by one pixel.
