@@ -25,5 +25,5 @@ The web page must contain some (vanilla) JavaScript and some CSS.
 - The web page should consist of one HTML file. This project comes with a file called `index.html` which you may use. You are free to edit this file.
 - All JavaScript and CSS should be bundled with __Webpack__. 
 - You should use __Yarn__ as your package manager and build tool.
-- All JavaScript should be written in vanilla ES7 and transpiled to ES5.
+- All JavaScript should be written in vanilla ES Next and transpiled to ES5.
 - All CSS should use vendor prefixes when needed. What browsers to support is up to you, but it should be easy to change the configuration and bundle a new version targeting another set of browsers.
