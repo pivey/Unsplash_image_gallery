@@ -21,9 +21,13 @@ Try to come up with something funny that is more than just a grid of images.
 The web page must contain some (vanilla) JavaScript and some CSS.
 
 ### Requirements 
-
-- The web page should consist of one HTML file. This project comes with a file called `index.html` which you may use. You are free to edit this file.
 - All JavaScript and CSS should be bundled with __Webpack__. 
+- The web page should consist of one HTML file. This project comes with a file called `index.html` which you may use. You are free to edit this file.
 - You should use __Yarn__ as your package manager and build tool.
-- All JavaScript should be written in vanilla ES Next and transpiled to ES5.
-- All CSS should use vendor prefixes when needed. What browsers to support is up to you, but it should be easy to change the configuration and bundle a new version targeting another set of browsers.
+
+#### JavaSript
+- All JavaScript should make use of new ES Next features and transpiled with Babel to ES5.
+
+#### CSS
+- Use a CSS precompiler. If you have tried Sass before, take the opportunity to try Stylus (or Less)
+- Autoprefixer: all CSS should be vendor prefixed when needed. What browsers to support is up to you, but it should be easy to change the configuration and bundle a new version targeting another set of browsers.
