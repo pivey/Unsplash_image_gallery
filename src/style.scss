@@ -381,55 +381,92 @@ template {
 
 // ************************************** layout *****************************************
 
+:root {
+  --gallery-width: 70%;
+  --gallery-height: calc(0.7 * var(--gallery-width));
+}
+
 body {
-  background-color: lightgrey;
+  background-color: mistyrose;
   height: 100vh;
-  padding: 50px;
+  font-family: 'Oswald', sans-serif;
+}
+
+main {
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100vw;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+  height: 25vh;
+  background-color: #fff;
+  border: 2px dashed orange;
+  font-size: 3rem;
 }
 
 .grid-page-container {
   display: grid;
   width: 100%;
-  grid-template-rows: [top] 200px [content] auto [top] 200px;
+  grid-template-rows: [top] auto [content] auto [bottom] 20px;
+  grid-row-gap: 25px;
 }
 
-.grid-item {
-  margin: 5px;
-  border: 2px solid red;
+.grid-item:nth-child(1) {
+  margin-top: 40px;
+}
+
+.grid-item:nth-last-child(1) {
+  margin-bottom: 40px;
+}
+
+.grid-item > div{
+  height:auto;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 2px dotted red;
+  margin: 15px 0px;
+  scroll-snap-type: y mandatory;
+}
+
+.slide {
+  scroll-snap-align: start;
+  // flex-shrink: 0;
+  scroll-behavior: smooth;
+}
+
+a {
+color:transparent;
+}
+
+.slide > div:target {
+  transform: scale(2);
+}
+
+.slides> div {
+  scroll-snap-align: start;
 }
 
 .img-container {
-  padding: 10px;
-  box-sizing: border-box;
-  grid-template-columns: 40px 50px auto 50px 40px;
-  grid-template-rows: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  overflow-x: scroll;
-  white-space: nowrap;
-}
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
 
+  height: 90vh;
+  box-sizing: border-box;
+  // grid-template-rows: 40px 50px auto 50px 40px;
+  // grid-template-columns: auto;
+  border: 2px dashed green;
+  overflow-y: scroll;
 
-
-
-
-// .grid-page-layout {
-//   display:grid; 
-//   grid-template-columns: 100px, 1fr, 1fr, 100px; 
-//   grid-template-rows:20vh, 70vh, 10vh; 
-// }
-
-// .grid-container {
-//   display: grid;
-//   grid-template-columns: 0.5fr 0.75fr 1fr 2.5fr 1fr 0.75fr 0.5fr;
-//   grid-template-rows: 0.25fr 1fr 1fr 0.25fr;
-
-// }
-
-
-.grid>img {
-  background: #EDE7F6;
-  padding: 1.5rem;
-  border-radius: 2rem;
 }
