@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "webpack": "^4.33.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "sass": "^1.21.0"
+  }
+}
