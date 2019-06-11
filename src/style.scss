@@ -378,95 +378,36 @@ template {
   display: none;
 }
 
+// *********************************************************************************
 
-// ************************************** layout *****************************************
-
-:root {
-  --gallery-width: 70%;
-  --gallery-height: calc(0.7 * var(--gallery-width));
-}
-
-body {
+html, body {
   background-color: mistyrose;
-  height: 100vh;
-  font-family: 'Oswald', sans-serif;
+  padding:15px;
 }
 
-main {
-  box-sizing: border-box;
-  padding: 20px;
-  width: 100vw;
-}
-
-.top-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  text-align: center;
+.container > div > img {
   width: 100%;
-  padding: 15px;
-  height: 25vh;
-  background-color: #fff;
-  border: 2px dashed orange;
-  font-size: 3rem;
+  height: 100%;
+  object-fit: cover;
 }
 
-.grid-page-container {
+.container {
   display: grid;
-  width: 100%;
-  grid-template-rows: [top] auto [content] auto [bottom] 20px;
-  grid-row-gap: 25px;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-auto-rows: 100px;
+  grid-auto-flow: dense;
 }
 
-.grid-item:nth-child(1) {
-  margin-top: 40px;
+.long {
+  grid-column: span 2;
 }
 
-.grid-item:nth-last-child(1) {
-  margin-bottom: 40px;
+.tall {
+  grid-row: span 2;
 }
 
-.grid-item > div{
-  height:auto;
-  box-sizing: border-box;
-  padding: 5px;
-  border: 2px dotted red;
-  margin: 15px 0px;
-  scroll-snap-type: y mandatory;
-}
-
-.slide {
-  scroll-snap-align: start;
-  // flex-shrink: 0;
-  scroll-behavior: smooth;
-}
-
-a {
-color:transparent;
-}
-
-.slide > div:target {
-  transform: scale(2);
-}
-
-.slides> div {
-  scroll-snap-align: start;
-}
-
-.img-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: y mandatory;
-
-  height: 90vh;
-  box-sizing: border-box;
-  // grid-template-rows: 40px 50px auto 50px 40px;
-  // grid-template-columns: auto;
-  border: 2px dashed green;
-  overflow-y: scroll;
-
+.large {
+  grid-column: span 2;
+  grid-row: span 2;
 }
