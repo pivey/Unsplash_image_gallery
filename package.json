@@ -15,5 +15,8 @@
   "scripts": {
     "prestart": "webpack",
     "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }
