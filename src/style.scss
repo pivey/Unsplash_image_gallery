@@ -424,7 +424,11 @@ header {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  font: 2rem;
+  font: 0.6rem;
+}
+
+.header-html {
+  text-align:center;
 }
 
 footer {
@@ -439,7 +443,7 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%);
+  filter: grayscale(80%);
 }
 
 .container>div>img:hover {
@@ -463,7 +467,22 @@ footer {
   grid-row: span 2;
 }
 
+.small {
+  color:white;
+}
+
 .large {
   grid-column: span 2;
   grid-row: span 2;
 }
+
+.load_more {
+  padding:8px;
+  background-color: #fff;
+  border-radius:10px;
+}
+
+.load_more:focus {
+  outline-color: white;
+}
+
