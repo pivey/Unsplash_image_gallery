@@ -29,9 +29,9 @@ const container = document.querySelector('.container');
 const clientID = 'client_id=d956c6d15641100d543f18d20a30441edfb593cdbf60cd5e966711f6f6755b14'
 
 
-response.arrayBuffer().then(function(buffer) {
-  // do something with buffer
-});
+// response.arrayBuffer().then(function(buffer) {
+// });
+
 async function fetchImgs(userid) {
   let res = await fetch(`https://api.unsplash.com/users/peteriveyphotography/photos/?${userid}`);
   let data = await res.json()
