@@ -1,16 +1,12 @@
 import './style.scss';
+const key = require('../keys.js');
+let container = document.querySelector('.container');
+const loadMore = document.getElementById('load_more_button');
+let count = 1;
+let userInput = document.getElementById('picQuantityInput');
+const userInputSubmit = document.getElementById('picQuantitySubmit'); 
 
-// import {
-//   className
-// } from 'postcss-selector-parser';
-// console.log('HI')
-
-// var httpRequest = new XMLHttpRequest()
-// httpRequest.onreadystatechange = function (data) {
-//   // code
-// }
-// httpRequest.open('GET', url)
-// httpRequest.send()
+const clientID = key.api_key;
 
 function classRand() {
   const classArr = ['tall', 'long', 'small', 'large', 'small'];
@@ -25,48 +21,43 @@ function insertChild(imgUrl) {
   return div;
 }
 
-const container = document.querySelector('.container');
-const clientID = 'client_id=d956c6d15641100d543f18d20a30441edfb593cdbf60cd5e966711f6f6755b14'
+function insertImgIntoDom(data) {
+  data.forEach(function (value) {
+    const image_url = value.urls.thumb;
+    let div = insertChild(image_url);
+    container.appendChild(div);
+  });
+}
 
+function quantityRequest () {
+  if (userInput.value > 50) {
+    alert('input a number between 1 & 50');
+    userInput.value = '';
+    return; }
+  container.innerHTML = ''; 
+  fetchImgs(clientID, '&per_page=' + userInput.value)
+  .then(data => {
+    insertImgIntoDom(data);
+    userInput.value = ''; 
+  }).catch(err => {
+    console.log(err);
+  }); 
+}
 
-// response.arrayBuffer().then(function(buffer) {
-// });
-
-async function fetchImgs(userid) {
-  let res = await fetch(`https://api.unsplash.com/users/peteriveyphotography/photos/?${userid}`);
+async function fetchImgs(userid, parameter) {
+  let res = await fetch(`https://api.unsplash.com/users/peteriveyphotography/photos/?${userid}${parameter}`);
   let data = await res.json()
   return data;
 }
 
-fetchImgs(clientID)
+fetchImgs(clientID, '&per_page=5')
   .then(data => {
     const name = data[0].user.instagram_username;
     document.getElementById('header-html').innerHTML += ' ' + 'from' + ' ' + name;
-
-    data.forEach(function (value) {
-      const image_url = value.urls.thumb;
-      let div = insertChild(image_url);
-      container.appendChild(div);
-    });
-
+    insertImgIntoDom(data);
+  }).catch(err => {
+    console.log(err);
   });
-
-
-
-// $.getJSON(`https://api.unsplash.com/users/peteriveyphotography/photos/?
-// ${clientID}`, function(data){
-
-//   const name = data[0].user.instagram_username;
-
-//  document.getElementById('header-html').innerHTML += ' ' + 'from' + ' ' + name; ;
-
-//   $.each(data, function(index, value){
-
-//     const image_url = value.urls.thumb; 
-//     let div = insertChild(image_url);
-//     container.appendChild(div); 
-//   });
-// });
 
 document.querySelector('.container').addEventListener('click', (e) => {
   if (e.target.parentNode.tagName === 'DIV') {
@@ -77,3 +68,24 @@ document.querySelector('.container').addEventListener('click', (e) => {
     }
   };
 });
+
+loadMore.addEventListener('click', (e) => {
+  count += 1
+  fetchImgs(clientID, '&page=' + count)
+    .then(data => {
+      insertImgIntoDom(data);
+    }).catch(err => {
+      console.log(err);
+    });
+}); 
+
+userInputSubmit.addEventListener('click', () => {
+  quantityRequest()
+});
+
+userInput.addEventListener('keyup', (e) => {
+  if (e.keyCode === 13) quantityRequest();
+});
+
+
+
